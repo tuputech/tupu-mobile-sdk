@@ -5,6 +5,10 @@
 //  Created by drakeDan on 7/19/16.
 //  Copyright © 2016 tupu. All rights reserved.
 //
+
+#ifndef TUPULANDMARK_h
+#define TUPULANDMARK_h
+
 #import <UIKit/UIKit.h>
 #import <CoreMedia/CoreMedia.h>
 #import <Foundation/Foundation.h>
@@ -16,6 +20,12 @@
 
 /** 关键点个数 */
 @property (nonatomic, assign, readonly) int pointsNumber;
+
+/** 关键点数组 */
+@property (atomic, strong) NSMutableArray <NSValue *>*points;
+
+/** 是否检测到人脸关键点 */
+@property (nonatomic, assign) BOOL isFace;
 
 /**
  *  初始化方法 必须使用该方法初始化，否则会导致初始化失败。
@@ -32,10 +42,8 @@
  *  @param landmarkPoints 存放关键点的数组
  *  @return 有效关键点标志（TRUE：有效，FALSE：无效）
  */
-- (BOOL)getLandmark:(CMSampleBufferRef)sampleBuffer landmarkPoints:(NSArray <NSValue *>*)landmarkPoints;
-
-/** 释放Model资源和内部数据 */
-- (void)releaseModel;
+- (BOOL)getLandmark:(CMSampleBufferRef)sampleBuffer;
 
 @end
 
+#endif /* TUPULandmark_h */
